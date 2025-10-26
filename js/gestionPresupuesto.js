@@ -78,21 +78,25 @@ function listarGastos() {
     return gastos
 }
 
-function anyadirGasto(CrearGasto) {
-
+function anyadirGasto(Gasto) {
+    Gasto.id = idGasto
+    idGasto += 1
+    gastos.push(Gasto)
 }   
 
-function borrarGasto() {
-
+function borrarGasto(idGasto) {
+    const gastosSinId = gastos.filter(gasto => gasto.id !== idGasto)
+    gastos = gastosSinId
 }
 
 function calcularTotalGastos() {
-
+    return gastos.reduce((total, gasto) => total + gasto.valor, 0)
 }
 
 function calcularBalance() {
-
+    return (presupuesto - gastos.reduce((total, gasto) => total + gasto.valor, 0))
 }
+
 
 
 // Exportación de funciones
