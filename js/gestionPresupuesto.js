@@ -139,12 +139,55 @@ function calcularBalance() {
     return (presupuesto - gastos.reduce((total, gasto) => total + gasto.valor, 0))
 }
 
-function filtrarGastos() {
-
+function filtrarGastos(filtros) {
+    return gastos.filter(gasto => {
+        if (filtros.fechaDesde) {
+            const fechaDesde = Date.parse(filtros.fechaDesde);
+            if (gasto.fecha < fechaDesde) {
+                return false;
+            }
+        }
+        
+        if (filtros.fechaHasta) {
+            const fechaHasta = Date.parse(filtros.fechaHasta);
+            if (gasto.fecha > fechaHasta) {
+                return false;
+            }
+        }
+        
+        if (filtros.valorMinimo !== undefined) {
+            if (gasto.valor < filtros.valorMinimo) {
+                return false;
+            }
+        }
+        
+        if (filtros.valorMaximo !== undefined) {
+            if (gasto.valor > filtros.valorMaximo) {
+                return false;
+            }
+        }
+        
+        if (filtros.descripcionContiene) {
+            if (!gasto.descripcion.toLowerCase().includes(filtros.descripcionContiene.toLowerCase())) {
+                return false;
+            }
+        }
+        
+        if (filtros.etiquetasTiene) {
+            const tieneAlgunaEtiqueta = filtros.etiquetasTiene.some(etiqueta => 
+                gasto.etiquetas.includes(etiqueta)
+            );
+            if (!tieneAlgunaEtiqueta) {
+                return false;
+            }
+        }
+        
+        return true;
+    });
 }
 
 function agruparGastos() {
-
+    
 }
 
 // Exportación de funciones
