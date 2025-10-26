@@ -51,7 +51,7 @@ CrearGasto.prototype.actualizarValor = function(nuevoValor) {
 }
 
 function listarGastos() {
-
+    return gastos
 }
 
 function anyadirGasto() {
@@ -67,7 +67,7 @@ function calcularTotalGastos() {
 }
 
 function calcularBalance() {
-    
+
 }
 
 
