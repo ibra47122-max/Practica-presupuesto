@@ -97,6 +97,25 @@ CrearGasto.prototype.borrarEtiquetas = function (...etiquetas) {
     return this.etiquetas
 }
 
+CrearGasto.prototype.obtenerPeriodoAgrupacion = function (formato) {
+    
+    const fechaFormateada = new Date(this.fecha)
+    const año = fechaFormateada.getFullYear()
+    const mes = String(fechaFormateada.getMonth() + 1).padStart(2, '0')
+    const dia = String(fechaFormateada.getDate()).padStart(2, '0')
+    
+    switch (formato) {
+        case 'anyo':
+            return String(año)
+        case 'mes':
+            return `${año}-${mes}`
+        case 'dia':
+            return `${año}-${mes}-${dia}`
+        default:
+            throw new Error('Formato no válido')
+    }
+}
+
 function listarGastos() {
     return gastos
 }
@@ -120,6 +139,13 @@ function calcularBalance() {
     return (presupuesto - gastos.reduce((total, gasto) => total + gasto.valor, 0))
 }
 
+function filtrarGastos() {
+
+}
+
+function agruparGastos() {
+
+}
 
 // Exportación de funciones
 export   {
@@ -130,5 +156,7 @@ export   {
     anyadirGasto,
     borrarGasto,
     calcularTotalGastos,
-    calcularBalance
+    calcularBalance,
+    filtrarGastos,
+    agruparGastos
 }
