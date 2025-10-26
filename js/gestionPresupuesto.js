@@ -74,6 +74,16 @@ CrearGasto.prototype.mostrarGastoCompleto = function() {
     return resultado
 }
 
+CrearGasto.prototype.actualizarFecha = function (fecha) {
+    console.log(new Date(fecha).toString())
+    if (new Date(fecha).toString() === "Invalid Date") {
+        return 
+    } else {
+        this.fecha = new Date(fecha).getTime()
+        return this.fecha
+    }
+}
+
 function listarGastos() {
     return gastos
 }
@@ -96,7 +106,6 @@ function calcularTotalGastos() {
 function calcularBalance() {
     return (presupuesto - gastos.reduce((total, gasto) => total + gasto.valor, 0))
 }
-
 
 
 // Exportación de funciones
