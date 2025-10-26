@@ -1,5 +1,7 @@
 // TODO: Variables globales
 let presupuesto = 0;
+let gastos = []
+let idGasto = 0
 
 // TODO: Funciones adicionales
 function actualizarPresupuesto(nuevoPresupuesto) {
