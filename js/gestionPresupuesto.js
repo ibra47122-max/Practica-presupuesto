@@ -50,9 +50,35 @@ CrearGasto.prototype.actualizarValor = function(nuevoValor) {
     return this.valor
 }
 
+function listarGastos() {
+
+}
+
+function anyadirGasto() {
+
+}
+
+function borrarGasto() {
+
+}
+
+function calcularTotalGastos() {
+
+}
+
+function calcularBalance() {
+    
+}
+
+
 // Exportación de funciones
 export   {
     mostrarPresupuesto,
     actualizarPresupuesto,
-    CrearGasto
+    CrearGasto,
+    listarGastos,
+    anyadirGasto,
+    borrarGasto,
+    calcularTotalGastos,
+    calcularBalance
 }
