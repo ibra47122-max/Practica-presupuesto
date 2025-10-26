@@ -186,8 +186,36 @@ function filtrarGastos(filtros) {
     });
 }
 
-function agruparGastos() {
+function agruparGastos(periodo, etiquetas = [], fechaDesde, fechaHasta) {
+    const filtros = {};
     
+    if (etiquetas.length > 0) {
+        filtros.etiquetasTiene = etiquetas;
+    }
+    
+    if (fechaDesde) {
+        filtros.fechaDesde = fechaDesde;
+    }
+    
+    if (fechaHasta) {
+        filtros.fechaHasta = fechaHasta;
+    }
+    
+    const gastosFiltrados = filtrarGastos(filtros);
+    
+    const agrupacion = {};
+    
+    gastosFiltrados.forEach(gasto => {
+        const periodoGasto = gasto.obtenerPeriodoAgrupacion(periodo);
+        
+        if (agrupacion[periodoGasto]) {
+            agrupacion[periodoGasto] += gasto.valor;
+        } else {
+            agrupacion[periodoGasto] = gasto.valor;
+        }
+    });
+    
+    return agrupacion;
 }
 
 // Exportación de funciones
