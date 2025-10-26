@@ -92,6 +92,11 @@ CrearGasto.prototype.anyadirEtiquetas = function (...etiquetas) {
     }
 }
 
+CrearGasto.prototype.borrarEtiquetas = function (...etiquetas) {
+    this.etiquetas = this.etiquetas.filter(etiqueta => !etiquetas.includes(etiqueta))
+    return this.etiquetas
+}
+
 function listarGastos() {
     return gastos
 }
