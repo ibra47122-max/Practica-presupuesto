@@ -24,13 +24,22 @@ function mostrarPresupuesto() {
     return `Tu presupuesto actual es de ${presupuesto} €`
 }
 
-function CrearGasto(descripcion, valor) {
+function CrearGasto(descripcion, valor, fecha, ...etiquetas) {
     this.descripcion = descripcion
+    this.etiquetas = [...etiquetas]
     if (valor >= 0) {
         this.valor = valor
     } else {
         this.valor = 0
     }
+
+    if (fecha === undefined || new Date(fecha.toString()) === "Invalid Date" || typeof fecha !== 'string') {
+        console.log("No se ha pasado fecha")
+        this.fecha = new Date()
+    } else {
+        this.fecha = new Date(fecha).getTime()
+    }
+
 }
 
 CrearGasto.prototype.mostrarGasto = function() {
