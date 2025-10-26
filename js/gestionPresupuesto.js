@@ -84,6 +84,14 @@ CrearGasto.prototype.actualizarFecha = function (fecha) {
     }
 }
 
+CrearGasto.prototype.anyadirEtiquetas = function (...etiquetas) {
+    for (let etiqueta of etiquetas) {
+        if (!this.etiquetas.includes(etiqueta)){
+            this.etiquetas.push(etiqueta)
+        }
+    }
+}
+
 function listarGastos() {
     return gastos
 }
