@@ -59,13 +59,28 @@ CrearGasto.prototype.actualizarValor = function(nuevoValor) {
     return this.valor
 }
 
+CrearGasto.prototype.mostrarGastoCompleto = function() {
+    const fechaFormateada = new Date(this.fecha).toLocaleString()
+    
+    let resultado = `Gasto correspondiente a ${this.descripcion} con valor ${this.valor} €.`
+    resultado += `\nFecha: ${fechaFormateada}`
+    resultado += `\nEtiquetas:`
+    
+    this.etiquetas.forEach(etiqueta => {
+        resultado += `\n- ${etiqueta}`
+    })
+    resultado += `\n` 
+    
+    return resultado
+}
+
 function listarGastos() {
     return gastos
 }
 
-function anyadirGasto() {
+function anyadirGasto(CrearGasto) {
 
-}
+}   
 
 function borrarGasto() {
 
