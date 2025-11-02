@@ -17,6 +17,14 @@ let listadoGastos = document.querySelector(".listado-gastos")
 const botones = document.querySelectorAll("button")
 let gastoId = 0
 
+//Con esto cada vez que un boton es pulsado se calcula el total
+botones.forEach(boton => {
+    boton.addEventListener('click', (event) => {
+        let gastosTotales = calcularTotalGastos()
+        mostrarGastosTotales(gastosTotales)
+    });
+});
+
 function crearGastoHTML(gasto) {
     //Esta funcion sirve para crear el gasto en html
 
