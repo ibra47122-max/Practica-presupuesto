@@ -4,8 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestor de gastos</title>
+    <script src="js/gestionPresupuestoWebV1.js" type="module"></script>
+    <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
-    
+    <header>
+        <h1>Gestor de presupuesto</h1>
+    </header>
+    <main>
+        <div class="formulario-gastos">
+            <form action="">
+                <h2>Añadir gasto</h2>
+                <div class="descripcion input-container">
+                    <label for="descripcion-input">Descripción del gasto</label>
+                    <input type="text" id="descripcion-input" required>
+                </div>
+                <div class="valor input-container">
+                    <label for="valor-input">Valor del gasto</label>
+                    <input type="text" id="valor-input" required>
+                </div>
+                <div class="fecha input-container">
+                    <label for="fecha-input">Fecha del gasto</label>
+                    <input type="text" id="fecha-input" required>
+                </div>
+                <div class="etiquetas input-container">
+                    <label for="etiquetas-input">Etiquetas del gasto(separadas por comas)</label>
+                    <input type="text" id="etiquetas-input">
+                </div>
+                <button class="agregar-gasto">Añadir gasto</button>
+            </form>
+        </div>
+        <div class="listado-gastos">
+            
+        </div>
+        <div class="total-gastos">
+
+        </div>
+    </main>
 </body>
 </html>
