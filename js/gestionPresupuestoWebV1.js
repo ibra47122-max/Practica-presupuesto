@@ -88,3 +88,41 @@ function crearGastoHTML(gasto) {
     
     return gastoDiv;
 }
+
+function agregarGasto(gasto) {
+    //Funcion para agregar el gasto al html y a la lista de gastos
+    let gastoDiv = crearGastoHTML(gasto)
+    listadoGastos.appendChild(gastoDiv)
+}
+
+function getValoresDatos() {
+    //Obtiene los datos del formulario y tranforma las etiquetas
+    const descripcionInput = document.querySelector("#descripcion-input").value
+    const valorInput = document.querySelector("#valor-input").value
+    const fechaInput = document.querySelector("#fecha-input").value
+    const etiquetasInput = document.querySelector("#etiquetas-input").value
+    const arrayEtiquetas = etiquetasInput.split(',').map(etiqueta => etiqueta.trim())
+    console.log(arrayEtiquetas)
+
+    const gasto = {
+        "descripcion": descripcionInput,
+        "valor": valorInput,
+        "fecha": fechaInput,
+        "etiquetas": arrayEtiquetas
+    }
+
+    return gasto
+}
+
+function mostrarGastosTotales(gastoTotal) {
+    const gastoTotalDiv = document.querySelector(".total-gastos")
+    const totalElement = document.createElement('p');
+    totalElement.textContent = `Gasto total: ${gastoTotal} €`;
+    gastoTotalDiv.appendChild(totalElement);
+}
+
+agregarGastoBton.addEventListener('click', (event) => {
+    event.preventDefault()
+    const gasto = getValoresDatos()
+    agregarGasto(gasto)
+})
