@@ -20,7 +20,8 @@ let gastoId = 0
 //Con esto cada vez que un boton es pulsado se calcula el total
 botones.forEach(boton => {
     boton.addEventListener('click', (event) => {
-        let gastosTotales = calcularTotalGastos()
+        let gastosTotales = calcularTotalGastos(listadoGastos)
+        console.log(gastosTotales)
         mostrarGastosTotales(gastosTotales)
     });
 });
