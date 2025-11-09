@@ -75,4 +75,51 @@ class GastoItem extends HTMLElement {
       this.shadowRoot.appendChild(clone);
     }
   }
+
+// Registrar el componente
+customElements.define("gasto-item", GastoItem);
+
+// Variables que guardan el formulario para añadir gastos y la lista donde añadir los gastos
+const formNuevo = document.querySelector(".formulario-gastos");
+console.log(formNuevo)
+const lista = document.querySelector(".listado-gastos")
+
+formNuevo.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    // En estas variables se almacenan los datos del gasto añadido
+    const descripcionInput = document.querySelector("#descripcion-input").value
+    const valorInput = parseFloat(document.querySelector("#valor-input").value)
+    const fechaInput = document.querySelector("#fecha-input").value
+    const etiquetasInput = document.querySelector("#etiquetas-input").value
+    const arrayEtiquetas = etiquetasInput.split(',').map(etiqueta => etiqueta.trim())
+
+    //Se crea el objeto gasto con las variables del los datos del gasto
+    const gasto = new CrearGasto(
+    descripcionInput,
+    valorInput,
+    fechaInput,
+    arrayEtiquetas
+    );
+
+    //Se añade el gasto al array deg gastos
+    anyadirGasto(gasto);
+
+    //Crea el elemento web y lo añade al html
+    const item = document.createElement("gasto-item");
+    item.gasto = gasto;
+    lista.appendChild(item);
+
+    //Actualiza el valor total de los gastos y los añade al html
+    const totalGastosDiv = document.querySelector(".total-gastos")
+    totalGastosDiv.innerHTML = 
+    `<p>
+        Total gastos: ${calcularTotalGastos()}
+    </p>`
+    console.log(calcularTotalGastos())
+    console.log(listarGastos())
+
+
+});
+
   
