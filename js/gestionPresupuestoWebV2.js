@@ -11,6 +11,10 @@ import {
     agruparGastos
 } from '../js/gestionPresupuesto.js';  
 
+//Botones para guardar y cargar los datos al localstorage
+const guardarButton = document.querySelector(".guardar")
+const cargarButton = document.querySelector(".cargar")
+
 class GastoItem extends HTMLElement {
     constructor() {
       super();
