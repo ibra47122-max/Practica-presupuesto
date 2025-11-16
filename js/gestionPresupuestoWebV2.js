@@ -15,6 +15,19 @@ import {
 const guardarButton = document.querySelector(".guardar")
 const cargarButton = document.querySelector(".cargar")
 
+guardarButton.addEventListener("click", () => {
+  /*
+  Cuandos se pulsa sobre el boton de guardar, guarda los gastos,
+  únicamente se guardan si la lista tiene gastos, si no da error
+  */ 
+  const gastos = listarGastos()
+  if (gastos.length > 0) {
+    localStorage.setItem("gastos", JSON.stringify(gastos))
+  } else {
+    alert("No hay gastos para guardar")
+  }
+})
+
 class GastoItem extends HTMLElement {
     constructor() {
       super();
