@@ -20,6 +20,20 @@ header {
     justify-self: center;
 }
 
+button {
+    background-color: transparent;
+    border: none;
+    transition: transform 0.5s;
+}
+
+button:active {
+    transform: scale(80%);
+}
+
+button:hover {
+    cursor: pointer;
+}
+
 header h1 {
     color: white;
     font-size: 2.5rem;
