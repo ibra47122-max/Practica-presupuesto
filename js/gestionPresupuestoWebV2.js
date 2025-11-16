@@ -28,6 +28,23 @@ guardarButton.addEventListener("click", () => {
   }
 })
 
+cargarButton.addEventListener("click", () => {
+  /*
+  Esta funcion se encargar de cargar los gastos. Si no hay gastos
+  no los añade a la pagina, en caso contrario, si los añade
+  */
+  const gastosLocal = JSON.parse(localStorage.getItem("gastos"))
+  if (gastosLocal.length > 0) {
+    gastosLocal.forEach((gasto) => {
+      let item = document.createElement("gasto-item");
+      item.gasto = gasto;
+      lista.appendChild(item);
+    })
+  } else {
+    alert("No hay gastos guardadp")
+  }
+})
+
 class GastoItem extends HTMLElement {
     constructor() {
       super();
